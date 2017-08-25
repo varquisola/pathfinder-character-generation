@@ -1,0 +1,49 @@
+﻿@import './app/vendor/semantic.min.css';
+
+.ui.menu .item img.logo {
+    margin-right: 1.5em;
+}
+
+form.ui.segment.form {
+  background-color: #F1F9FF;
+  margin-top: 2em;
+}
+
+form.form:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.ui.grid.posts {
+  margin-top: 2em;
+}
+
+.meta {
+  color: #9A9A9A
+}
+
+.ui.grid>.row>.column.votes {
+  display: flex;
+}
+
+ul.ui.list li:before {
+  content: '';
+}
+
+
+field, input {
+	width: 200px;
+	padding-right: 30px;
+	display: inline-block;
+}
+
+#container {
+  width: 70%;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #666;
+  background: #ffffff;
+}

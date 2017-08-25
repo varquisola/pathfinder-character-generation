@@ -1,0 +1,115 @@
+﻿<div class="ui container">
+  <div class="form">
+    <div class="ui raised segment">
+      <h2 class="ui header">Description</h2>
+      <form [formGroup]="pcgForm" class="ui form" [class.error]="!pcgForm.valid && pcgForm.touched">
+        <div class="three fields">
+          <div class="field" [class.error]="!pcgForm.controls['name'].valid && pcgForm.controls['name'].touched">
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name" id="nameInput" placeholder="name" [formControl]="pcgForm.controls['name']">
+            <div *ngIf="pcgForm.controls['name'].hasError('required')" class="ui error message">Name is required</div>
+          </div>
+
+          <div class="field">
+            <label for="alignment">Alignment:</label>
+            <select formControlName="alignment" id="alignmentInput">
+              <option [selected]="pcgForm.controls['alignment'].value == null" value="">-- Select --</option>
+              <option *ngFor="let alignment of alignments" [selected]="alignment.value == alignment" [value]="alignment.value">{{alignment.display}}</option>
+            </select>
+          </div>
+
+          <div class="field" [class.error]="!pcgForm.controls['player'].valid && pcgForm.controls['player'].touched">
+            <label for="player">Player:</label>
+            <input type="text" formControlName="player" id="playerInput" placeholder="player" [formControl]="pcgForm.controls['player']">
+            <div *ngIf="pcgForm.controls['player'].hasError('required')" class="ui error message">Player is required</div>
+          </div>
+        </div>
+
+        <div class="four fields">
+          <div class="field">
+            <label for="classname">Class:</label>
+            <select formControlName="classname" id="classInput" required>
+              <option [selected]="pcgForm.controls['classname'].value == null" value="">-- Select --</option>
+              <option *ngFor="let class of classes" [selected]="class == class" [value]="class">{{class}}</option>
+            </select>
+          </div>
+
+          <div class="field" [class.error]="!pcgForm.controls['level'].valid && pcgForm.controls['level'].touched">
+            <label for="level">Level:</label>
+            <input type="number" min="1" formControlName="level" id="levelInput" [formControl]="pcgForm.controls['level']">
+            <div *ngIf="pcgForm.controls['level'].hasError('min')" class="ui error message">Level is Below Minimum Value</div>
+          </div>
+
+          <div class="field">
+            <label for="deity">Deity:</label>
+            <input type="text" formControlName="deity" id="deityInput" placeholder="deity" [formControl]="pcgForm.controls['deity']">
+          </div>
+
+          <div class="field">
+            <label for="homeland">Homeland:</label>
+            <input type="text" formControlName="homeland" id="homelandInput" placeholder="homeland" [formControl]="pcgForm.controls['homeland']">
+          </div>
+        </div>
+
+        <div class="nine fields">
+          <div class="field">
+            <label for="race">Race:</label>
+            <select formControlName="race" id="raceInput" required>
+              <option [selected]="pcgForm.controls['race'].value == null" value="">-- Select --</option>
+              <option *ngFor="let race of races" [selected]="race == race" [value]="race">{{race}}</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="size">Size:</label>
+            <select formControlName="size" id="sizeInput" required>
+              <option *ngFor="let size of sizes" [selected]="size == sizes" [value]="size">{{size}}</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="gender">Gender:</label>
+            <input type="text" formControlName="gender" id="genderInput" placeholder="gender" [formControl]="pcgForm.controls['gender']">
+          </div>
+
+          <div class="field" [class.error]="!pcgForm.controls['age'].valid && pcgForm.controls['age'].touched">
+            <label for="age">Age:</label>
+            <input type="number" min="0" formControlName="age" id="ageInput" [formControl]="pcgForm.controls['age']">
+            <div *ngIf="pcgForm.controls['age'].hasError('min')" class="ui error message">Age is Below Minimum Value</div>
+          </div>
+
+          <div class="field" [class.error]="!pcgForm.controls['heightfeet'].valid && pcgForm.controls['heightfeet'].touched">
+            <label for="heightfeet">Height (ft):</label>
+            <input type="number" min="0" formControlName="heightfeet" id="heightfeetInput" [formControl]="pcgForm.controls['heightfeet']">
+          </div>
+
+          <div class="field" [class.error]="!pcgForm.controls['heightinches'].valid && pcgForm.controls['heightinches'].touched">
+            <label for="heightinches">Height (in):</label>
+            <input type="number" step="any" min="0" max="12" formControlName="heightinches" id="heightinchesInput" [formControl]="pcgForm.controls['heightinches']">
+          </div>
+
+          <div class="field" [class.error]="!pcgForm.controls['weight'].valid && pcgForm.controls['weight'].touched">
+            <label for="weight">Weight (lb):</label>
+            <input type="number" step="any" min="0" formControlName="weight" id="weightInput" [formControl]="pcgForm.controls['weight']">
+          </div>
+
+          <div class="field">
+            <label for="hair">Hair Color:</label>
+            <input type="text" formControlName="hair" id="hairInput" placeholder="hair color" [formControl]="pcgForm.controls['hair']">
+          </div>
+
+          <div class="field">
+            <label for="eyes">Eye Color:</label>
+            <input type="text" formControlName="eyes" id="eyesInput" placeholder="eye color" [formControl]="pcgForm.controls['eyes']">
+          </div>
+        </div>
+
+        <div *ngIf="!pcgForm.valid" class="ui error message">Form is invalid</div>
+
+        <button class="ui right floated button" (click)="toAbilityScores()">To Ability Scores</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>

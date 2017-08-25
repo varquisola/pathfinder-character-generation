@@ -1,0 +1,19 @@
+﻿<div class="ui raised segment">
+  <h2 class="ui header">Other Scores</h2>
+
+  <form [formGroup]="hpForm" class="ui form" (ngSubmit)="onSubmit(hpForm.value)">
+    <table class="ui single line table">
+      <thead>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HP</td>
+          <td>
+            <input type="number" formControlName="hpscore" [formControl]="hpForm.controls['hpscore']">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+</div>

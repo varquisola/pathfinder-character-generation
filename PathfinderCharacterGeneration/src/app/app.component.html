@@ -1,0 +1,24 @@
+﻿<div class="page-header">
+  <div class="ui container">
+    <div class="ui dividing header">
+      <h1>Welcome to Pathfinder Character Generation!</h1>
+    </div>
+
+    <div class="ui menu">
+      <a class="item" [routerLink]="['/charactergeneration']">
+        Create Character
+      </a>
+      <div class="right menu">
+        <a class="item">
+          Login
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
