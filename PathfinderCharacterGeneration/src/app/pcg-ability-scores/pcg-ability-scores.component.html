@@ -1,105 +1,100 @@
-﻿<div class="ui raised segment">
-  <h2 class="ui header">Ability Scores</h2>
-  <h4>{{ racialBonusMessage }}</h4>
-  <p>There are five ways listed to distribute ability points to traits: </p>
-  <p>
-    <b>Standard</b>: Roll 4d6, discard the lowest die result, and add the three remaining results together. Record this total 
-    and repeat the process until six numbers are generated. Assign these totals to your ability scores as you see fit.
-    <br />
-    <b>Classic</b>: Roll 3d6 and add the dice together. Record this total and repeat the process until you generate six numbers. 
-    Assign these results to your ability scores as you see fit.
-    <br /> 
-    <b>Heroic</b>: Roll 2d6 and add 6 to the sum of the dice. Record this total and repeat the process until six numbers are generated. 
-    Assign these totals to your ability scores as you see fit.
-    <br />
-    <b>Dice Pool</b>: Each character has a pool of 24d6 to assign to his statistics. Before the dice are rolled, the player selects the 
-    number of dice to roll for each score, with a minimum of 3d6 for each ability. Once the dice have been assigned, the player rolls each 
-    group and totals the result of the three highest dice. For more high-powered games, the GM should increase the total number of dice to 28.
-    <br />
-    <b>Purchase</b>: Each character receives a number of points to spend on increasing his basic attributes. In this method, all attributes 
-    start at a base of 10. A character can increase an individual score by spending some of his points. Likewise, he can gain more points to 
-    spend on other scores by decreasing one or more of his ability scores. No score can be reduced below 7 or raised above 18 using this method.
-    The pool size can be any number of points, but the typical value for a low fantasy game is 10 points, a standard fantasy game is 15 points, 
-    a high fantasy game is 20 points, and an epic fantasy game is 25 points. 
-  </p>
-  <form [formGroup]="abilityForm" class="ui form">
-    <table class="ui single line table">
-      <thead>
-        <tr>
-          <th>Ability Name</th>
-          <th>Ability Score</th>
-          <th>Ability Modifier</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Strength</td>
-          <td>
-            <input type="number" formControlName="strscore" name="strscore" [formControl]="abilityForm.controls['strscore']">
-          </td>
-          <td>
-            {{ abilityscores.strmodifier }}
-          </td>
-        </tr>
-        <tr>
-          <td>Dexterity</td>
-          <td>
-            <input type="number" formControlName="dexscore" name="dexscore" [formControl]="abilityForm.controls['dexscore']">
-          </td>
-          <td>
-            {{ abilityscores.dexmodifier }}
-          </td>
-        </tr>
-        <tr>
-          <td>Constitution</td>
-          <td>
-            <input type="number" formControlName="conscore" name="conscore" [formControl]="abilityForm.controls['conscore']">            
-          </td>
-          <td>
-            {{ abilityscores.conmodifier }}
-          </td>
-        </tr>
-        <tr>
-          <td>Intelligence</td>
-          <td>
-            <input type="number" formControlName="intscore" name="intscore" [formControl]="abilityForm.controls['intscore']">
-          </td>
-          <td>
-            {{ abilityscores.intmodifier }}
-          </td>
-        </tr>
-        <tr>
-          <td>Wisdom</td>
-          <td>
-            <input type="number" formControlName="wisscore" name="wisscore" [formControl]="abilityForm.controls['wisscore']">
-          </td>
-          <td>
-            {{ abilityscores.wismodifier }}
-          </td>
-        </tr>
-        <tr>
-          <td>Charisma</td>
-          <td>
-            <input type="number" formControlName="chascore" name="chascore" [formControl]="abilityForm.controls['chascore']">
-          </td>
-          <td>
-            {{ abilityscores.chamodifier }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+﻿<div class="ui container">
+  <div class="ui raised segment">
+    <h2 class="ui header">Ability Scores</h2>
+    <h4>{{ racialBonusMessage }}</h4>
+    <p>There are five ways listed to distribute ability points to traits: </p>
+    <p>
+      <b>Standard</b>: Roll 4d6, discard the lowest die result, and add the three remaining results together. Record this total
+      and repeat the process until six numbers are generated. Assign these totals to your ability scores as you see fit.
+      <br />
+      <b>Classic</b>: Roll 3d6 and add the dice together. Record this total and repeat the process until you generate six numbers.
+      Assign these results to your ability scores as you see fit.
+      <br />
+      <b>Heroic</b>: Roll 2d6 and add 6 to the sum of the dice. Record this total and repeat the process until six numbers are generated.
+      Assign these totals to your ability scores as you see fit.
+      <br />
+      <b>Dice Pool</b>: Each character has a pool of 24d6 to assign to his statistics. Before the dice are rolled, the player selects the
+      number of dice to roll for each score, with a minimum of 3d6 for each ability. Once the dice have been assigned, the player rolls each
+      group and totals the result of the three highest dice. For more high-powered games, the GM should increase the total number of dice to 28.
+      <br />
+      <b>Purchase</b>: Each character receives a number of points to spend on increasing his basic attributes. In this method, all attributes
+      start at a base of 10. A character can increase an individual score by spending some of his points. Likewise, he can gain more points to
+      spend on other scores by decreasing one or more of his ability scores. No score can be reduced below 7 or raised above 18 using this method.
+      The pool size can be any number of points, but the typical value for a low fantasy game is 10 points, a standard fantasy game is 15 points,
+      a high fantasy game is 20 points, and an epic fantasy game is 25 points.
+    </p>
+    <form [formGroup]="abilityForm" class="ui form">
+      <table class="ui single line table">
+        <thead>
+          <tr>
+            <th>Ability Name</th>
+            <th>Ability Score</th>
+            <th>Ability Modifier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Strength</td>
+            <td>
+              <input type="number" formControlName="strscore" name="strscore" [formControl]="abilityForm.controls['strscore']">
+            </td>
+            <td>
+              {{ abilityscores.strmodifier }}
+            </td>
+          </tr>
+          <tr>
+            <td>Dexterity</td>
+            <td>
+              <input type="number" formControlName="dexscore" name="dexscore" [formControl]="abilityForm.controls['dexscore']">
+            </td>
+            <td>
+              {{ abilityscores.dexmodifier }}
+            </td>
+          </tr>
+          <tr>
+            <td>Constitution</td>
+            <td>
+              <input type="number" formControlName="conscore" name="conscore" [formControl]="abilityForm.controls['conscore']">
+            </td>
+            <td>
+              {{ abilityscores.conmodifier }}
+            </td>
+          </tr>
+          <tr>
+            <td>Intelligence</td>
+            <td>
+              <input type="number" formControlName="intscore" name="intscore" [formControl]="abilityForm.controls['intscore']">
+            </td>
+            <td>
+              {{ abilityscores.intmodifier }}
+            </td>
+          </tr>
+          <tr>
+            <td>Wisdom</td>
+            <td>
+              <input type="number" formControlName="wisscore" name="wisscore" [formControl]="abilityForm.controls['wisscore']">
+            </td>
+            <td>
+              {{ abilityscores.wismodifier }}
+            </td>
+          </tr>
+          <tr>
+            <td>Charisma</td>
+            <td>
+              <input type="number" formControlName="chascore" name="chascore" [formControl]="abilityForm.controls['chascore']">
+            </td>
+            <td>
+              {{ abilityscores.chamodifier }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <button routerLink="/charactergeneration/description"
-            class="ui left floated button">
-      Back to Description
-    </button>
-    <button routerLink="/charactergeneration/otherscores"
-            class="ui right floated button"
-            (click)="toHpCalculation()">
-      To Other Stats
-    </button>
-  </form>
-    
+      <button type="button" (click)="toPrevStep()" class="ui left floated button">Back to Description</button>
+      <button type="button" (click)="toNextStep()" class="ui right floated button">To Other Scores</button>
+    </form>
+
+  </div>
 </div>
 
 

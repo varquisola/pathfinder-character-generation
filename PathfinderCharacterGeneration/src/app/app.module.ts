@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PcgFormParentComponent } from './pcg-form-parent/pcg-form-parent.component';
 
+import { ButtonEmitterService } from './buttonemitter.service';
 import { CharacterService } from './character.service';
 
 const routes: Routes = [
@@ -38,7 +39,10 @@ const routes: Routes = [
     //Child links
     CharacterGenModule
   ],
-  providers: [CharacterService],
+  providers: [
+      ButtonEmitterService,
+      CharacterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

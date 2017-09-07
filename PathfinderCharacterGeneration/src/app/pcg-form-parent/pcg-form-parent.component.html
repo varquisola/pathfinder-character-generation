@@ -1,5 +1,24 @@
-﻿<div class="ui container">
-  <br />
-  <br />
-  <router-outlet></router-outlet>
-</div> 
+﻿<app-pcg-new-character-form>
+  <app-pcg-form-step [title]="'Step1'" (onNext)="onStep1Next($event)">
+    <h1>Step1</h1>
+    <app-pcg-description></app-pcg-description>
+  </app-pcg-form-step>
+  <app-pcg-form-step [title]="'Step2'" (onNext)="onStep2Next($event)">
+    <h1>Step2</h1>
+    <app-pcg-ability-scores></app-pcg-ability-scores>
+  </app-pcg-form-step>
+  <app-pcg-form-step [title]="'Step3'" (onNext)="onStep3Next($event)">
+    <h1>Step3</h1>
+    <app-pcg-other-scores></app-pcg-other-scores>
+  </app-pcg-form-step>
+  <app-pcg-form-step [title]="'Step4'" (onComplete)="onComplete($event)">
+    <div [ngSwitch]="isCompleted">
+      <div *ngSwitchDefault>
+        <h1>Step4</h1>
+      </div>
+      <div *ngSwitchCase="true">
+        <h4>Thank you! You have completed all the steps.</h4>
+      </div>
+    </div>
+  </app-pcg-form-step>
+</app-pcg-new-character-form>

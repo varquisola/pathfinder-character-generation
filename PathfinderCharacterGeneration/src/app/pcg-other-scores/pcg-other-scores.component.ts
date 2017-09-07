@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Description } from '../description';
 import { AbilityScores } from '../abilityscores';
 
+import { ButtonEmitterService } from '../buttonemitter.service';
 import { CharacterService } from '../character.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -21,9 +22,6 @@ export class PcgOtherScoresComponent implements OnInit {
   
 
     constructor(public characterService: CharacterService, fb: FormBuilder) {
-        this.currentDescription = this.characterService.getCurrentDescription();
-        this.currentAbilityScores = this.characterService.getCurrentAbilityScores();
-        console.log('Object in other-scores: ' + this.currentAbilityScores);
 
         this.hpForm = fb.group({
             'hpscore': this.hpScore
@@ -31,6 +29,9 @@ export class PcgOtherScoresComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.currentDescription = this.characterService.getCurrentDescription();
+        this.currentAbilityScores = this.characterService.getCurrentAbilityScores();
+        console.log('Object in other-scores: ' + this.currentAbilityScores);
     }
 
 }

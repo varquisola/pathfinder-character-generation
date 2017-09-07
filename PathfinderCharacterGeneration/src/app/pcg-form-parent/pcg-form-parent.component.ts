@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PcgDescriptionComponent } from '../pcg-description/pcg-description.component';
 import { PcgAbilityScoresComponent } from '../pcg-ability-scores/pcg-ability-scores.component';
 
+import { ButtonEmitterService } from '../buttonemitter.service';
 import { CharacterService } from '../character.service';
 
 import { Description, characters } from '../description';
@@ -23,11 +24,11 @@ export const routes: Routes = [
 })
 
 export class PcgFormParentComponent implements OnInit {
-    subscription: Subscription;
+    characterSubscription: Subscription;
     myDescription: Description;
     testDescription: Description;
  
-    constructor(public characterService: CharacterService) {
+    constructor(public buttonEmitterService: ButtonEmitterService, public characterService: CharacterService) {
         
     }
 
@@ -38,7 +39,8 @@ export class PcgFormParentComponent implements OnInit {
         this.subscription = this.characterService.currentDescription$
             .subscribe(description => this.myDescription = description);
         */
-        this.subscription = this.characterService.currentDescription$.subscribe(description => {
+
+        this.characterSubscription = this.characterService.currentDescription$.subscribe(description => {
             this.myDescription = description;
             console.log("Object in parent component: " + this.myDescription);
         });
@@ -46,4 +48,15 @@ export class PcgFormParentComponent implements OnInit {
         this.testDescription = this.characterService.getCurrentDescription();
         console.log("Test description output: " + this.testDescription);
     }
+
+    onStep1Next(event): void {
+        console.log('It makes sense now!' + event);
+        console.log(this.myDescription.name);
+        //this.ngOnChanges();
+    }    
+
+    onStep2Next(event): void {
+        console.log('I may not need this step!');
+    }    
+
 }

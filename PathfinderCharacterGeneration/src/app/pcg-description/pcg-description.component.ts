@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { Description, alignments, classes, races, sizes, characters } from '../description';
 
+import { ButtonEmitterService } from '../buttonemitter.service';
 import { CharacterService } from '../character.service';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -12,9 +13,10 @@ import { Subscription } from 'rxjs/Subscription';
   selector: 'app-pcg-description',
   templateUrl: './pcg-description.component.html'
 })
-export class PcgDescriptionComponent implements OnChanges {
+export class PcgDescriptionComponent implements OnInit, OnChanges {
     description: Description;
     subscription: Subscription;
+    sendObjectSubscription: Subscription;
     pcgForm: FormGroup;
     alignments = alignments;
     classes = classes;
@@ -22,7 +24,7 @@ export class PcgDescriptionComponent implements OnChanges {
     sizes = sizes;
     characters = characters;
    
-    constructor(public characterService: CharacterService, fb: FormBuilder, private router: Router) {
+    constructor(public buttonEmitterService: ButtonEmitterService, public characterService: CharacterService, fb: FormBuilder, private router: Router) {
         this.subscription = this.characterService.currentDescription$.subscribe(description => { this.description = description; });
         if (this.description === null) {
             this.description = new Description(0, '', null, '', null, 1, '', '',
@@ -51,6 +53,14 @@ export class PcgDescriptionComponent implements OnChanges {
         this.raceChange();
         this.setSizeDependency();
 
+    }
+
+    ngOnInit() {
+        this.sendObjectSubscription = this.characterService.activateSubject.subscribe(booleanVal => {
+            if (booleanVal) {
+                this.submitDescription();
+            }
+        });
     }
     
     ngOnChanges() {
@@ -202,12 +212,16 @@ export class PcgDescriptionComponent implements OnChanges {
         });
     }
     
-    toAbilityScores(): void {
+    submitDescription(): void {
         this.description = this.prepareSaveDescription();
         this.characterService.setCurrentDescription(this.description);
         //this.ngOnChanges();
-        this.router.navigateByUrl('/charactergeneration/abilityscores');
     }    
+
+    toNextStep(): void {
+        this.submitDescription();
+        this.buttonEmitterService.nextButtonPressed();
+    }
 
     addCharacter() {
         var entry = {

@@ -1,19 +1,26 @@
-﻿<div class="ui raised segment">
-  <h2 class="ui header">Other Scores</h2>
+﻿<div class="ui container">
+  <div class="ui raised segment">
+    <h2 class="ui header">HP Calculation</h2>
+    <p>Calculating HP Based on Level: </p>
+    <p>If starting at level 1: HP = Max amount on hit dice + Constitution Bonus</p>
+    <p>If starting at a level greater than 1: take HP at level 1. For every level greater than one, 
+    roll the hit dice and add that value to HP. 
+    </p>
 
-  <form [formGroup]="hpForm" class="ui form" (ngSubmit)="onSubmit(hpForm.value)">
-    <table class="ui single line table">
-      <thead>
-      </thead>
-      <tbody>
-        <tr>
-          <td>HP</td>
-          <td>
-            <input type="number" formControlName="hpscore" [formControl]="hpForm.controls['hpscore']">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+    <form [formGroup]="hpForm" class="ui form" (ngSubmit)="onSubmit(hpForm.value)">
+      <table class="ui single line table">
+        <thead>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HP</td>
+            <td>
+              <input type="number" formControlName="hpscore" [formControl]="hpForm.controls['hpscore']">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
 
+  </div>
 </div>

@@ -8,6 +8,8 @@ import { PcgFormParentComponent } from '../pcg-form-parent/pcg-form-parent.compo
 import { PcgDescriptionComponent } from '../pcg-description/pcg-description.component';
 import { PcgAbilityScoresComponent } from '../pcg-ability-scores/pcg-ability-scores.component';
 import { PcgOtherScoresComponent } from '../pcg-other-scores/pcg-other-scores.component';
+import { PcgNewCharacterFormComponent } from '../pcg-new-character-form/pcg-new-character-form.component';
+import { PcgFormStepComponent } from '../pcg-form-step/pcg-form-step.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'description', pathMatch: 'full' },
@@ -21,13 +23,17 @@ export const routes: Routes = [
         PcgDescriptionComponent,
         PcgAbilityScoresComponent,
         PcgFormParentComponent,
-        PcgOtherScoresComponent
+        PcgOtherScoresComponent,
+        PcgNewCharacterFormComponent,
+        PcgFormStepComponent
     ],
     exports: [
         PcgDescriptionComponent,
         PcgAbilityScoresComponent,
         PcgFormParentComponent,
-        PcgOtherScoresComponent
+        PcgOtherScoresComponent,
+        PcgNewCharacterFormComponent,
+        PcgFormStepComponent
     ],
     imports: [
         BrowserModule,
